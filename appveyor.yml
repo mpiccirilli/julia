@@ -11,6 +11,7 @@ branches:
   only:
     - master
     - release-0.3
+    - tk/avtest
 
 skip_commits:
 # Add [av skip] to commit messages for docfixes, etc to reduce load on queue
@@ -41,6 +42,8 @@ build_script:
 # Remove C:\MinGW\bin from the path, the version of MinGW installed on
 # AppVeyor is not compatible with the cross-compiled Julia Windows binaries
   - set PATH=%PATH:C:\MinGW\bin;=%
+  - echo %PATH%
+  - where shasum
 # Since the AppVeyor VMs have Git installed, they have MSYS1
   - sh --login /c/projects/julia/contrib/windows/msys_build.sh
 
